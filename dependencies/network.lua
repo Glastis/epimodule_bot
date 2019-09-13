@@ -24,7 +24,7 @@ local function request(url, headers)
     }
     :perform()
     :close()
-    return curl_data
+    return curl_data.data
 end
 network.request = request
 

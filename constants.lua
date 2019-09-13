@@ -10,7 +10,7 @@ local constants = {}
 constants.MODULES_FILE = 'modules_list.txt'
 constants.TOKEN_FILE = 'token.txt'
 
-constants.SEPARATOR_HEADERS = ': '
+constants.COOKIES = 'Cookie: gdpr=0; language=fr; user='
 constants.SEPARATOR_LINK_SUSCRIBED = '|'
 
 constants.HEADER_USER_TOKEN_KEY = 'user'

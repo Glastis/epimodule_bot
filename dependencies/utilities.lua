@@ -84,6 +84,9 @@ local function read_file(filepath)
     local str
 
     f = io.open(filepath, 'rb')
+    if not f then
+        return nil
+    end
     str = f:read('*all')
     f:close()
     return str

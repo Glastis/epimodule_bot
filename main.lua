@@ -9,9 +9,6 @@ local net = require 'dependencies.network'
 local utilitie = require 'dependencies.utilities'
 local constant = require 'constants'
 
---local page = net.request('https://google.com')
---print(page.data)
-
 function get_modules_suscribed(module)
     local i
     local tmp
@@ -51,7 +48,7 @@ function save_modules(modules)
     while i <= #modules do
         tmp = tmp .. modules[i].link
         if modules[i].suscribed_new then
-            tmp = tmp .. constant.SEPARATOR_LINK_SUSCRIBED .. modules[i].suscribed_new
+            tmp = tmp .. constant.SEPARATOR_LINK_SUSCRIBED .. modules[i].suscribed_new .. '\n'
         end
         i = i + 1
     end
@@ -64,10 +61,11 @@ function refresh_suscribed_module(url, token)
     local ret
 
     headers = {}
-    headers[1] = constant.HEADER_USER_TOKEN_KEY .. constant.SEPARATOR_HEADERS .. token
-    headers[2] = constant.HEADER_GDPR_KEY .. constant.SEPARATOR_HEADERS .. constant.HEADER_GDPR_VAL
+    headers[1] = constant.COOKIES .. token
+
+    utilitie.var_dump(url, true)
     ret = net.request(url .. constant.URL_ADD_FORMAT_JSON, headers)
-    utilitie.var_dump(ret, true)
+    print(ret)
 end
 
 function refresh_suscribed(modules, token)
